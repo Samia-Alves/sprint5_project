@@ -18,7 +18,7 @@ hist_button = st.button('Construir histograma')
 
 if hist_button:
 
-    st.write('Criando histograma para price')
+    st.write('Criando histograma para preços')
 
     fig = px.histogram(
         car_data,
@@ -32,7 +32,7 @@ scatter_button = st.button('Construir gráfico de dispersão')
 
 if scatter_button:
 
-    st.write('Criando gráfico de dispersão para odometer e price')
+    st.write('Criando gráfico de dispersão para odometer e preços')
 
     fig = px.scatter(
         car_data,

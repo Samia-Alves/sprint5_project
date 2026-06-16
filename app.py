@@ -6,6 +6,13 @@ st.header('Análise de Veículos')
 
 car_data = pd.read_csv('vehicles.csv')
 
+tipo = st.selectbox(
+    'Escolha o tipo de veículo:',
+    car_data['type'].dropna().unique()
+)
+
+car_data_filtrado = car_data[car_data['type'] == tipo]
+
 st.write('Visualização inicial dos dados:')
 st.dataframe(car_data.head())
 
@@ -21,7 +28,7 @@ if hist_button:
     st.write('Criando histograma para preços')
 
     fig = px.histogram(
-        car_data,
+        car_data_filtrado,
         x='price'
     )
 
@@ -35,7 +42,7 @@ if scatter_button:
     st.write('Criando gráfico de dispersão para odometer e preços')
 
     fig = px.scatter(
-        car_data,
+        car_data_filtrado,
         x='odometer',
         y='price'
     )

@@ -21,7 +21,7 @@ st.write('Vehicles found:', len(car_data_filtrado))
 st.write('Data preview:')
 
 
-sst.dataframe(
+st.dataframe(
     car_data_filtrado.rename(columns={
         'price': 'Price',
         'model_year': 'Year',

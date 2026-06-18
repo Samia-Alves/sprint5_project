@@ -19,25 +19,25 @@ st.write('Filtered price:', f"{car_data_filtrado['price'].mean():.2f}")
 st.write('Vehicles found:', len(car_data_filtrado))
 
 st.write('Data preview:')
-st.dataframe(
+
+
+sst.dataframe(
     car_data_filtrado.rename(columns={
-    'price': 'Price',
-    'model_year': 'Year',
-    'model': 'Model',
-    'type': 'Type',
-    'date_posted': 'Date Posted',
-    'days_listed': 'Days Listed',
-    'odometer': 'Mileage',
-    'condition': 'Condition',
-    'cylinders': 'Cylinders',
-    'fuel': 'Fuel',
-    'transmission': 'Transmission',
-    'paint_color': 'Color',
-    'is_4wd': '4WD'
-}
+        'price': 'Price',
+        'model_year': 'Year',
+        'model': 'Model',
+        'type': 'Type',
+        'date_posted': 'Date Posted',
+        'days_listed': 'Days Listed',
+        'odometer': 'Mileage',
+        'condition': 'Condition',
+        'cylinders': 'Cylinders',
+        'fuel': 'Fuel',
+        'transmission': 'Transmission',
+        'paint_color': 'Color',
+        'is_4wd': '4WD'
     }).fillna('Unknown').sample(5)
 )
-
 st.write('Summary:')
 st.write('Average price:', f"{car_data_filtrado['price'].mean():.2f}")
 st.write('Average mileage:', f"{car_data_filtrado['odometer'].mean():.0f}")
@@ -51,7 +51,7 @@ fig = px.histogram(
 
 st.plotly_chart(fig)
 
-scatter_button = st.button('Construir gráfico de dispersão')
+scatter_button = st.button('Build Scatter Plot')
 
 if scatter_button:
 

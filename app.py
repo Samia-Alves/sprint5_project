@@ -12,15 +12,15 @@ tipo = st.selectbox(
 )
 
 car_data_filtrado = car_data[car_data['type'] == tipo]
-st.write("Preço filtrado:", round(car_data_filtrado['price'].mean(), 2))
+st.write('Preço filtrado:', f"{car_data_filtrado['price'].mean():.2f}")
 st.write('Veículos encontrados:', len(car_data_filtrado))
 
 st.write('Visualização inicial dos dados:')
 st.dataframe(car_data_filtrado.sample(5))
 
 st.write('Resumo geral:')
-st.write('Preço médio:', round(car_data_filtrado['price'].mean(), 2))
-st.write('Odômetro médio:', round(car_data_filtrado['odometer'].mean(), 2))
+st.write('Preço médio:', f"{car_data_filtrado['price'].mean():.2f}")
+st.write('Odômetro médio:', f"{car_data_filtrado['odometer'].mean():.2f}")
 
 st.write('Distribuição dos preços')
 

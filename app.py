@@ -5,6 +5,9 @@ import streamlit as st
 st.title('🚗 Análise de Veículos')
 
 car_data = pd.read_csv('vehicles.csv')
+car_data['is_4wd'] = car_data['is_4wd'].map({
+    1.0: 'Sim'
+}).fillna('Não informado')
 
 tipo = st.selectbox(
     'Escolha o tipo de veículo:',
@@ -20,7 +23,7 @@ st.dataframe(car_data_filtrado.sample(5))
 
 st.write('Resumo geral:')
 st.write('Preço médio:', f"{car_data_filtrado['price'].mean():.2f}")
-st.write('Odômetro médio:', f"{car_data_filtrado['odometer'].mean():.2f}")
+st.write('Odômetro médio:', f"{car_data_filtrado['odometer'].mean():.0f}")
 
 st.write('Distribuição dos preços')
 

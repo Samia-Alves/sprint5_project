@@ -2,41 +2,47 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-st.title('🚗 Análise de Veículos')
+st.title('🚗 Vehicle Analysis')
 
 car_data = pd.read_csv('vehicles.csv')
 car_data['is_4wd'] = car_data['is_4wd'].map({
-    1.0: 'Sim'
-}).fillna('Não informado')
+    1.0: 'Yes'
+}).fillna('Unknown')
 
 tipo = st.selectbox(
-    'Escolha o tipo de veículo:',
+    'Choose a vehicle type:',
     car_data['type'].dropna().unique()
 )
 
 car_data_filtrado = car_data[car_data['type'] == tipo]
-st.write('Preço filtrado:', f"{car_data_filtrado['price'].mean():.2f}")
-st.write('Veículos encontrados:', len(car_data_filtrado))
+st.write('Filtered price:', f"{car_data_filtrado['price'].mean():.2f}")
+st.write('Vehicles found:', len(car_data_filtrado))
 
-st.write('Visualização inicial dos dados:')
+st.write('Data preview:')
 st.dataframe(
     car_data_filtrado.rename(columns={
-        'price': 'Preço',
-        'odometer': 'Quilometragem',
-        'condition': 'Condição',
-        'cylinders': 'Cilindros',
-        'fuel': 'Combustível',
-        'transmission': 'Transmissão',
-        'paint_color': 'Cor',
-        'is_4wd': 'Tração 4x4'
-    }).sample(5)
+    'price': 'Price',
+    'model_year': 'Year',
+    'model': 'Model',
+    'type': 'Type',
+    'date_posted': 'Date Posted',
+    'days_listed': 'Days Listed',
+    'odometer': 'Mileage',
+    'condition': 'Condition',
+    'cylinders': 'Cylinders',
+    'fuel': 'Fuel',
+    'transmission': 'Transmission',
+    'paint_color': 'Color',
+    'is_4wd': '4WD'
+}
+    }).fillna('Unknown').sample(5)
 )
 
-st.write('Resumo geral:')
-st.write('Preço médio:', f"{car_data_filtrado['price'].mean():.2f}")
-st.write('Odômetro médio:', f"{car_data_filtrado['odometer'].mean():.0f}")
+st.write('Summary:')
+st.write('Average price:', f"{car_data_filtrado['price'].mean():.2f}")
+st.write('Average mileage:', f"{car_data_filtrado['odometer'].mean():.0f}")
 
-st.write('Distribuição dos preços')
+st.write('Price Distribution')
 
 fig = px.histogram(
     car_data_filtrado,

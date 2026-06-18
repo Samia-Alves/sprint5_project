@@ -15,11 +15,13 @@ tipo = st.selectbox(
 )
 
 car_data_filtrado = car_data[car_data['type'] == tipo]
-st.write('Filtered price:', f"{car_data_filtrado['price'].mean():.2f}")
+st.write(
+    'Average price for selected type:',
+    f"${car_data_filtrado['price'].mean():,.2f}"
+)
 st.write('Vehicles found:', len(car_data_filtrado))
 
 st.write('Data preview:')
-
 
 st.dataframe(
     car_data_filtrado.rename(columns={
@@ -39,8 +41,14 @@ st.dataframe(
     }).fillna('Unknown').sample(5)
 )
 st.write('Summary:')
-st.write('Average price:', f"{car_data_filtrado['price'].mean():.2f}")
-st.write('Average mileage:', f"{car_data_filtrado['odometer'].mean():.0f}")
+st.write(
+    'Average price:',
+    f"${car_data_filtrado['price'].mean():,.2f}"
+)
+st.write(
+    'Average mileage:',
+    f"{car_data_filtrado['odometer'].mean():,.0f} miles"
+)
 
 st.write('Price Distribution')
 
@@ -55,7 +63,7 @@ scatter_button = st.button('Build Scatter Plot')
 
 if scatter_button:
 
-    st.write('Criando gráfico de dispersão para odometer e preços')
+    st.write('Creating scatter plot for mileage and prices')
 
     fig = px.scatter(
         car_data_filtrado,

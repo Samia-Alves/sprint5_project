@@ -27,6 +27,18 @@ tabela = car_data_filtrado.sample(5).copy()
 
 tabela = tabela.fillna('Unknown')
 
+tabela['model_year'] = tabela['model_year'].apply(
+    lambda x: 'Unknown' if x == 'Unknown' else str(int(x))
+)
+
+tabela['odometer'] = tabela['odometer'].apply(
+    lambda x: 'Unknown' if x == 'Unknown' else str(int(x))
+)
+
+tabela['cylinders'] = tabela['cylinders'].apply(
+    lambda x: 'Unknown' if x == 'Unknown' else str(int(x))
+)
+
 st.dataframe(
     tabela.rename(columns={
         'price': 'Price',

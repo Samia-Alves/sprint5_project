@@ -1,15 +1,22 @@
-# Sprint 5 Project
+# Vehicle Analysis
 
-Aplicação web desenvolvida com Streamlit para análise de anúncios de veículos.
+Web application developed with Streamlit for analyzing vehicle listings.
 
-## Ferramentas utilizadas
+## Features
 
-- pandas
-- plotly-express
-- streamlit
+- Filter vehicles by type
+- View a sample of the dataset
+- Price distribution histogram
+- Mileage vs Price scatter plot
+- Summary statistics
 
-## Funcionalidades
+## Live Application
 
-- Histograma dos preços dos veículos
-- Visualização interativa com Plotly
-- Interface web com Streamlit
+https://sprint5-project-n64u.onrender.com
+
+## Technologies
+
+- Python
+- Pandas
+- Plotly Express
+- Streamlit

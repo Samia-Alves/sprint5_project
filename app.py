@@ -16,25 +16,20 @@ st.write("Preço filtrado:", round(car_data_filtrado['price'].mean(), 2))
 st.write('Veículos encontrados:', len(car_data_filtrado))
 
 st.write('Visualização inicial dos dados:')
-st.dataframe(car_data_filtrado.head())
+st.dataframe(car_data_filtrado.sample(5))
 
 st.write('Resumo geral:')
 st.write('Preço médio:', round(car_data_filtrado['price'].mean(), 2))
 st.write('Odômetro médio:', round(car_data_filtrado['odometer'].mean(), 2))
 
-hist_button = st.button('Construir histograma')
+st.write('Distribuição dos preços')
 
-if hist_button:
+fig = px.histogram(
+    car_data_filtrado,
+    x='price'
+)
 
-    st.write('Criando histograma para preços')
-
-    fig = px.histogram(
-        car_data_filtrado,
-        x='price'
-    )
-
-    st.plotly_chart(fig)
-
+st.plotly_chart(fig)
 
 scatter_button = st.button('Construir gráfico de dispersão')
 

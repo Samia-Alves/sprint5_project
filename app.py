@@ -19,7 +19,18 @@ st.write('Preço filtrado:', f"{car_data_filtrado['price'].mean():.2f}")
 st.write('Veículos encontrados:', len(car_data_filtrado))
 
 st.write('Visualização inicial dos dados:')
-st.dataframe(car_data_filtrado.sample(5))
+st.dataframe(
+    car_data_filtrado.rename(columns={
+        'price': 'Preço',
+        'odometer': 'Quilometragem',
+        'condition': 'Condição',
+        'cylinders': 'Cilindros',
+        'fuel': 'Combustível',
+        'transmission': 'Transmissão',
+        'paint_color': 'Cor',
+        'is_4wd': 'Tração 4x4'
+    }).sample(5)
+)
 
 st.write('Resumo geral:')
 st.write('Preço médio:', f"{car_data_filtrado['price'].mean():.2f}")

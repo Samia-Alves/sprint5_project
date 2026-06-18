@@ -23,8 +23,12 @@ st.write('Vehicles found:', len(car_data_filtrado))
 
 st.write('Data preview:')
 
+tabela = car_data_filtrado.sample(5).copy()
+
+tabela = tabela.fillna('Unknown')
+
 st.dataframe(
-    car_data_filtrado.rename(columns={
+    tabela.rename(columns={
         'price': 'Price',
         'model_year': 'Year',
         'model': 'Model',
@@ -38,7 +42,7 @@ st.dataframe(
         'transmission': 'Transmission',
         'paint_color': 'Color',
         'is_4wd': '4WD'
-    }).fillna('Unknown').sample(5)
+    })
 )
 st.write('Summary:')
 st.write(
